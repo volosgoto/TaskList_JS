@@ -11,11 +11,13 @@ loadAllEventListeners()
 // Load all event listeners
 function loadAllEventListeners() {
     // add task event
-    form.addEventListener('submit', addTask)
+    form.addEventListener('submit', addTask);
+    // remove task
+    taskList.addEventListener('click', removeTask);
     
 }
 
-// add task
+// ADD TASK
 function addTask(e) {
     if (taskInput.value === ''){
         alert('Add a task')
@@ -40,4 +42,9 @@ function addTask(e) {
     taskInput.value = '';
 
     e.preventDefault()
+}
+
+// REMOVE TASK
+function removeTask() {
+    
 }
