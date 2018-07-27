@@ -27,5 +27,17 @@ function addTask(e) {
     // Create a textNode and apped to li
     li.appendChild(document.createTextNode(taskInput.value));
     // Create new link elenemt
+    let link = document.createElement('a');
+    // Add class
+    link.className = 'delete-item secondary-content';
+    // Add item html
+    link.innerHTML = '<i class="fa fa-remove"></i>';
+    // Append link to li
+    li.appendChild(link);
+    // Append li to ul
+    taskList.appendChild(li);
+    // Clear input
+    taskInput.value = '';
+
     e.preventDefault()
 }
