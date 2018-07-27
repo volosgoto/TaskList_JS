@@ -45,6 +45,10 @@ function addTask(e) {
 }
 
 // REMOVE TASK
-function removeTask() {
-    
+function removeTask(e) {
+    if (e.target.parentElement.classList.contains('delete-item')) {
+        // console.log(e.target);
+        e.target.parentElement.parentElement.remove();
+    }
+
 }
