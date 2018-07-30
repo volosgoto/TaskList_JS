@@ -101,9 +101,27 @@ function removeTask(e) {
         // console.log(e.target);
         if(confirm('Are you sure?')) {
             e.target.parentElement.parentElement.remove();
+            // Remove form local storage
+            removeTaskFromLocalstorage(e.target.parentElement.parentElement);
         }
     }
 }
+
+// REMOVE TASK FROM LOCALSTORAGE
+function removeTaskFromLocalstorage(taskItem) {
+    //console.log(taskItem);
+    let tasks;
+	if(localStorage.getItem('tasks') === null) {
+		tasks = [];
+	} else {
+		tasks = JSON.parse(localStorage.getItem('tasks'));
+	}
+
+	tasks.forEach((task, index) => taskItem.textContent === task && tasks.splice(index, 1));
+
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
 
 // CLEAR TASKS
 function cleatTasks(e) {
