@@ -129,7 +129,14 @@ function cleatTasks(e) {
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild)
     }
+    clearTasksFromLocalStorage();
 }
+
+// Clear tasks from local storage
+function clearTasksFromLocalStorage() {
+    localStorage.clear();
+}
+
 
 // FILTER TASKS
 function filterTasks(e) {
