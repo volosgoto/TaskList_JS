@@ -55,8 +55,32 @@ function addTask(e) {
 
 // GET TASKS FROM LOCAL STORAGE
 function getTasks(params) {
-    
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+        tasks.forEach(function(task) {
+            // Create li element
+            let li = document.createElement('li');
+            // Add class
+            li.className = 'collection-item';
+            // Create a textNode and apped to li
+            li.appendChild(document.createTextNode(task));
+            // Create new link elenemt
+            let link = document.createElement('a');
+            // Add class
+            link.className = 'delete-item secondary-content';
+            // Add item html
+            link.innerHTML = '<i class="fa fa-remove"></i>';
+            // Append link to li
+            li.appendChild(link);
+            // Append li to ul
+            taskList.appendChild(li);
+    });
 }
+
 
 // STORE TASKS
 function storeTaskInLocalStorage(task){
