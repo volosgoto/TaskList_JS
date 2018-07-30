@@ -41,11 +41,27 @@ function addTask(e) {
     li.appendChild(link);
     // Append li to ul
     taskList.appendChild(li);
+
+    // Store in a local storage
+    storeTaskInLocalStorage(taskInput.value);
+
     // Clear input
     taskInput.value = '';
 
     e.preventDefault()
 }
+
+// STORE TASKS
+function storeTaskInLocalStorage(task){
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+        tasks.push(task);
+}
+
 
 // REMOVE TASK
 function removeTask(e) {
@@ -59,7 +75,7 @@ function removeTask(e) {
 
 // CLEAR TASKS
 function cleatTasks(e) {
-    // taskList.innerHTML = '';
+    // taskList.innerHTML = ''; // More fast way thought loop
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild)
     }
@@ -70,13 +86,13 @@ function filterTasks(e) {
     let text = e.target.value.toLowerCase();
     document.querySelectorAll('.collection-item').forEach(function (task) {  // NodeList
         let item = task.firstChild.textContent;
-        if (item.toLowerCase().indexOf(text) != -1) {
+        if (item.toLowerCase().indexOf(text) != -1) { // is in string
             task.style.display = 'block';
         } else {
             task.style.display = 'none';
         }
     }); 
-    console.log(text);
-    
-    
+    // console.log(text);
 }
+
+
