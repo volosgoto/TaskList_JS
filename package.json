@@ -1,0 +1,11 @@
+{
+  "name": "TaskList_JS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/volosgoto/TaskList_JS.git",
+  "author": "volosgoto <volosgoto@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
